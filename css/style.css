@@ -30,7 +30,24 @@ button.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.0
 .btn.primary:hover{opacity:.85}
 .btn.ghost{background:transparent;border-color:transparent;padding-left:0}
 .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 18px}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  margin: 6px 0 18px;
+}
+
+.head h2 {
+  flex: 1;
+  min-width: 0;
+}
+
+.head .btn {
+  flex-shrink: 0;
+  margin-left: auto;
+}
 .detail{text-align:center;padding:36px 20px}
 .detail .big-val{font-size:1.2rem;color:var(--muted)}
 .detail .big-word{font-size:clamp(2.4rem,10vw,4rem);font-weight:600;margin:8px 0;overflow-wrap:anywhere}
