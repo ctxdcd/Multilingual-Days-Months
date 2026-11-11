@@ -119,7 +119,7 @@
     const s = scaleOf(state.scaleId), L = langOf(state.lang);
     app.innerHTML =
       '<button class="back" data-action="home" aria-label="All categories">' + BACK_ICON + '</button>' +
-      '<div class="head"><h2>' + s.title + ' · ' + L.name + '</h2><button class="btn primary" data-action="practice-scale">Practise this category</button></div>' +
+      '<div class="head"><h2>' + s.title + ' · ' + L.name + '</h2><button class="btn primary" data-action="practice-scale">Practise all</button></div>' +
       '<div class="grid small">' + s.values.map(function (v) {
         const rd = readingOf(L, v, state.script);
         return '<button class="card num" data-action="detail" data-value="' + v + '"><span class="num-val">' + D.label(v) + '</span><span class="num-word" ' + attrs(L) + '>' + textOf(L, v, state.script) + '</span>' + (rd ? '<span class="num-rom">' + rd + '</span>' : '') + '</button>';
