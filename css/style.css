@@ -739,7 +739,7 @@ main {
   .splash::after{
     content:"";
     width:min(34vw,160px);aspect-ratio:1;
-    background:url("../icons/icon-512.png") center/contain no-repeat;
+    background:url("../icons/icon-maskable-512.png") center/contain no-repeat;
     animation:splash-icon .8s ease both;
   }
 }
