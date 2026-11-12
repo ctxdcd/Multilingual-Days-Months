@@ -1,6 +1,7 @@
 // Service worker: saves the app files so the site works offline.
 // If you change any file, bump the number below (v1 -> v2) to be safe.
-const CACHE = 'days-months-v5';
+const PREFIX = 'days-months-';            // CHANGED: only touch our own caches
+const CACHE = PREFIX + 'v6';              // CHANGED: bumped from v5
 const FILES = [
   './',
   'index.html',
@@ -19,11 +20,15 @@ self.addEventListener('install', function (e) {
   );
 });
 
-// 2) Activate: delete old caches from earlier versions
+// 2) Activate: delete old caches from earlier versions of THIS app only
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); }));
+      return Promise.all(
+        keys
+          .filter(function (k) { return k.indexOf(PREFIX) === 0 && k !== CACHE; }) // CHANGED
+          .map(function (k) { return caches.delete(k); })
+      );
     }).then(function () { return self.clients.claim(); })
   );
 });
@@ -38,7 +43,8 @@ self.addEventListener('fetch', function (e) {
 
   e.respondWith(
     (async function () {
-      const cached = await caches.match(e.request);
+      const cache = await caches.open(CACHE);             // CHANGED: open our cache once
+      const cached = await cache.match(e.request);        // CHANGED: was caches.match
 
       // Use saved copy if available
       if (cached) return cached;
@@ -47,9 +53,7 @@ self.addEventListener('fetch', function (e) {
         const response = await fetch(e.request);
 
         if (response && response.ok) {
-          const copy = response.clone();
-          const cache = await caches.open(CACHE);
-          await cache.put(e.request, copy);
+          await cache.put(e.request, response.clone());   // CHANGED: reuse the open cache
         }
 
         return response;
@@ -57,7 +61,7 @@ self.addEventListener('fetch', function (e) {
       } catch (error) {
         // Try the homepage if an offline navigation fails
         if (e.request.mode === 'navigate') {
-          const homepage = await caches.match('./index.html');
+          const homepage = await cache.match('./index.html'); // CHANGED: was caches.match
           if (homepage) return homepage;
         }
 
