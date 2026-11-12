@@ -5,15 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Days &amp; Months</title>
   <meta name="theme-color" content="#f5f5f7">
-  <script>
-  // Installed app only: dark status bar during the intro, light again as it fades
-  (function () {
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta || !window.matchMedia || !matchMedia("(display-mode: standalone)").matches) return;
-    meta.setAttribute("content", "#0c0c0d");
-    setTimeout(function () { meta.setAttribute("content", "#f5f5f7"); }, 1350);
-  })();
-</script>
+  
 <link rel="manifest" href="manifest.json">
 
 <!-- Android / Chrome PWA -->
@@ -28,7 +20,7 @@
 </head>
 <body>
 
-  <div id="splash" class="splash" aria-hidden="true"></div>
+
 
   
 <header class="top">

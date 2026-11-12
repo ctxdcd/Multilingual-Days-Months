@@ -725,29 +725,3 @@ main {
   }
 }
 
-/* ===== Dark intro splash: shows on launch, then fades away ===== */
-.splash{display:none}
-
-@media (display-mode: standalone){
-  .splash{
-    display:grid;place-items:center;
-    position:fixed;inset:0;z-index:9999;
-    background:#0c0c0d;
-    pointer-events:none;
-    animation:splash-out .7s ease 1s forwards;
-  }
-  .splash::after{
-    content:"";
-    width:min(34vw,160px);aspect-ratio:1;
-    background:url("../icons/icon-512.png") center/contain no-repeat;
-    animation:splash-icon .8s ease both;
-  }
-}
-
-@keyframes splash-out{to{opacity:0;visibility:hidden}}
-@keyframes splash-icon{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-
-@media (prefers-reduced-motion:reduce){
-  .splash{animation-duration:.01s;animation-delay:.4s}
-  .splash::after{animation:none}
-}
