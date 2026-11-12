@@ -1,6 +1,6 @@
 // Service worker: saves the app files so the site works offline.
 // If you change any file, bump the number below (v1 -> v2) to be safe.
-const CACHE = 'days-months-v3';
+const CACHE = 'days-months-v4';
 const FILES = [
   './',
   'index.html',
