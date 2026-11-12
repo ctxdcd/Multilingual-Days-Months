@@ -1,7 +1,7 @@
 // Service worker: saves the app files so the site works offline.
 // If you change any file, bump the number below (v1 -> v2) to be safe.
 const PREFIX = 'days-months-';            // CHANGED: only touch our own caches
-const CACHE = PREFIX + 'v9';              // CHANGED: bumped from v8
+const CACHE = PREFIX + 'v10';              // CHANGED: bumped from v8
 const FILES = [
   './',
   'index.html',
