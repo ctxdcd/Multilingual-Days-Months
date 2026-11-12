@@ -1,6 +1,6 @@
 // Service worker: saves the app files so the site works offline.
 // If you change any file, bump the number below (v1 -> v2) to be safe.
-const CACHE = 'days-months-v2';
+const CACHE = 'days-months-v3';
 const FILES = [
   './',
   'index.html',
@@ -10,7 +10,6 @@ const FILES = [
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',
-  'icons/apple-touch-icon.png'
 ];
 
 // 1) Install: download and store all files
